@@ -1,0 +1,41 @@
+<!--
+    Color Clock
+
+    A simple page whose background color changes based on the current time.
+    The color is composed as a hex string whose digits come from the time:
+
+    #HHMMSS
+
+    (At midnight, the page will be black!)
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Clock</title>
+    <style>
+    body {
+        -webkit-transition: background 1s;
+        transition: background 1s;
+        background: black;
+    }
+    </style>
+</head>
+<body>
+<script>
+var body = document.getElementsByTagName("body")[0];
+function pad(number) {
+    var s = number.toString();
+    if (s.length == 1)
+        return "0" + s;
+    else return s;
+}
+function update() {
+    var d = new Date();
+    var hex = "#" + pad(d.getHours()) + pad(d.getMinutes()) + pad(d.getSeconds());
+    body.style.background = hex;
+}
+update();
+window.setInterval(update, 1000);
+</script>
+</body>
+</html>
